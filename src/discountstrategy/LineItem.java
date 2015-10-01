@@ -59,9 +59,10 @@ public class LineItem {
         Product p2 = new Product("A100", 20.00, "BaseBall Hat",
                 new PercentOffDiscount(.10));
         double amt = p2.getDiscountAmt(1);
+        double total = li.getTotal(20.00, 1.0);
         System.out.println("ProdID         unitPrice          Product        Discount    Total");
         System.out.println(p2.getProdId() + "           " + p2.getUnitPrice() + "                "
-                + p2.getName() + "    " + amt + "         " + li.getTotal(20.00, 1.0));
+                + p2.getName() + "    " + amt + "         " + total);
 
     }
 }
