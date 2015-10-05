@@ -14,6 +14,14 @@ public class ICustomer {
         this.custName = custName;
     }
 
+    public void setCustId(String custId) {
+        this.custId = custId;
+    }
+
+    public void setCustName(String custName) {
+        this.custName = custName;
+    }
+
     public String getCustId() {
         return custId;
     }

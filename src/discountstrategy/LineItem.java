@@ -5,6 +5,7 @@ package discountstrategy;
  * @author jwardell
  */
 public class LineItem {
+
     private double qty;
     private Product product;
     private double totalPrice;
@@ -17,7 +18,7 @@ public class LineItem {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-    
+
     public double getQty() {
         return qty;
     }
@@ -34,4 +35,3 @@ public class LineItem {
         this.product = product;
     }
 }
-
