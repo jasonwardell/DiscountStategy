@@ -4,7 +4,8 @@ package discountstrategy;
  *
  * @author jwardell
  */
-public class CashRegister  {
+public class CashRegister {
+
     private FakeDatabase db;
     private ICustomer custId;
     private ICustomer custName;
@@ -15,9 +16,6 @@ public class CashRegister  {
         this.custName = custName;
     }
 
-   public String getCustomer() {
-       return db.findCustomer(custId);
-   }
     public FakeDatabase getDb() {
         return db;
     }
@@ -41,10 +39,4 @@ public class CashRegister  {
     public void setCustName(ICustomer custName) {
         this.custName = custName;
     }
-    
-    public static void main(String[] args) {
-        
-        db.findCustomer(100);
-    }
-    
 }
