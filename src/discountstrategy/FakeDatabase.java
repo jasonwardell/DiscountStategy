@@ -1,5 +1,4 @@
 package discountstrategy;
-
 import java.util.Arrays;
 
 /**
