@@ -26,7 +26,10 @@ public class Receipt {
         addToLineItemArray(li);
     }
     
-    public String outputLineItems() {
-       return customer.getCustId() + customer.getCustName();
+    public void outputLineItems() {
+         for (LineItem item : lineItems) {
+             System.out.println(item);
+        }
+//       return customer.getCustId() + customer.getCustName();
     }
 }
