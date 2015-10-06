@@ -9,13 +9,11 @@ public class CashRegister {
     private Receipt receipt;
     private Product product;
 
-    public void startTransaction() {
-        receipt = new Receipt("100");
-        
-        addItems("A101", 2);
+    public final void startTransaction(String custId, ReceiptDataAccessStrategy db, OutputStrategy output) {
+        receipt = new Receipt(custId, db, output);   
     }
 
-    public void addItems(String prodId, int qty) {
+    public final void addItems(String prodId, int qty) {
         FakeDatabase db = new FakeDatabase();
         db.findProduct(prodId);
         if (prodId != null) {
@@ -23,7 +21,7 @@ public class CashRegister {
         }
     }
 
-    public void endTransaction() {
+    public final void endTransaction() {
         receipt.outputLineItems();
     }
 }

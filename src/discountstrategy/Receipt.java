@@ -8,17 +8,20 @@ public class Receipt {
 
     private ICustomer customer;
     private LineItem[] lineItems = new LineItem[0];
+    private OutputStrategy output;
+    private ReceiptDataAccessStrategy db;
 
-    public Receipt(String custId) {
-        FakeDatabase db = new FakeDatabase();
-        customer = db.findCustomer(custId);
+    public Receipt(String custId, ReceiptDataAccessStrategy db, OutputStrategy output) {
+        this.customer = db.findCustomer(custId);
+        this.output = output;
+        this.db = db;
     }
 
     public void addToLineItemArray(LineItem purchase) {
         LineItem[] tempArray = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempArray, 0, lineItems.length);
         tempArray[lineItems.length] = purchase;
-        tempArray =  lineItems;
+        lineItems = tempArray;
     }
 
     public void addLineItem(double qty, Product product) {
