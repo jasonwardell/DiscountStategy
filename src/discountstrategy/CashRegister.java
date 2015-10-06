@@ -6,37 +6,24 @@ package discountstrategy;
  */
 public class CashRegister {
 
-    private FakeDatabase db;
-    private ICustomer custId;
-    private ICustomer custName;
+    private Receipt receipt;
+    private Product product;
 
-    public CashRegister(FakeDatabase db, ICustomer custId, ICustomer custName) {
-        this.db = db;
-        this.custId = custId;
-        this.custName = custName;
+    public void startTransaction() {
+        receipt = new Receipt("100");
+        
+        addItems("A101", 2);
     }
 
-    public FakeDatabase getDb() {
-        return db;
+    public void addItems(String prodId, int qty) {
+        FakeDatabase db = new FakeDatabase();
+        db.findProduct(prodId);
+        if (prodId != null) {
+          receipt.addLineItem(qty, product);
+        }
     }
 
-    public void setDb(FakeDatabase db) {
-        this.db = db;
-    }
-
-    public ICustomer getCustId() {
-        return custId;
-    }
-
-    public void setCustId(ICustomer custId) {
-        this.custId = custId;
-    }
-
-    public ICustomer getCustName() {
-        return custName;
-    }
-
-    public void setCustName(ICustomer custName) {
-        this.custName = custName;
+    public void endTransaction() {
+        receipt.outputLineItems();
     }
 }

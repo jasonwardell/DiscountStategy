@@ -52,11 +52,5 @@ public class Product {
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
-    
-    public static void main(String[] args) {
-        Product product = new Product("A100", 20.00, "BaseBall Hat", 
-                new PercentOffDiscount(.10));
-        double amt = product.getDiscountAmt(2.0);
-        System.out.println("Expected discount in the amount of 4.00, but got " + amt);   
-    }   
+     
 }

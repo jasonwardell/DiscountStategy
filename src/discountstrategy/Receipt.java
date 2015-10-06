@@ -5,51 +5,28 @@ package discountstrategy;
  * @author jwardell
  */
 public class Receipt {
-    private double qty;
-    private Product product;
-    private LineItem totalPrice;
-    private String custId;
-    private Product prodId;
+
+    private ICustomer customer;
+    private LineItem[] lineItems = new LineItem[0];
 
     public Receipt(String custId) {
-        this.custId = custId;
+        FakeDatabase db = new FakeDatabase();
+        customer = db.findCustomer(custId);
     }
 
-    public String getCustId() {
-        return custId;
+    public void addToLineItemArray(LineItem purchase) {
+        LineItem[] tempArray = new LineItem[lineItems.length + 1];
+        System.arraycopy(lineItems, 0, tempArray, 0, lineItems.length);
+        tempArray[lineItems.length] = purchase;
+        tempArray =  lineItems;
     }
 
-    public void setCustId(String custId) {
-        this.custId = custId;
-    }
-
-
-    public Product getProdId() {
-        return prodId;
-    }
-
-    public void setProdId(Product prodId) {
-        this.prodId = prodId;
-    }
-
-    public double getQty() {
-        return qty;
-    }
-
-    public void setQty(double qty) {
-        this.qty = qty;
-    }
-
-    public LineItem getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(LineItem totalPrice) {
-        this.totalPrice = totalPrice;
+    public void addLineItem(double qty, Product product) {
+        LineItem li = new LineItem(qty, product);
+        addToLineItemArray(li);
     }
     
-    public String getReceipt() {
-        return (product.getProdId() + " " + product.getName() + " " + product.getUnitPrice() + " "
-                + qty + " " + product.getDiscountAmt(qty) + " " + totalPrice);
+    public String outputLineItems() {
+       return customer.getCustId() + customer.getCustName();
     }
 }

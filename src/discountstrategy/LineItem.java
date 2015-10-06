@@ -1,5 +1,4 @@
 package discountstrategy;
-
 /**
  *
  * @author jwardell
@@ -8,17 +7,12 @@ public class LineItem {
 
     private double qty;
     private Product product;
-    private double totalPrice;
 
-    public double getTotalPrice() {
-        totalPrice = (product.getUnitPrice() * qty) - product.getDiscountAmt(qty);
-        return totalPrice;
+    public LineItem(double qty, Product product) {
+        this.qty = qty;
+        this.product = product;
     }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
+    
     public double getQty() {
         return qty;
     }
@@ -27,11 +21,20 @@ public class LineItem {
         this.qty = qty;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getProductId() {
+        return product.getProdId();
     }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    
+    public String getProductName() {
+        return product.getName();
     }
+    
+    public double getProductUnitPrice() {
+        return product.getUnitPrice();
+    }
+    
+    public double getProductDiscountAmt() {
+        return product.getDiscountAmt(qty);
+    }
+   
 }

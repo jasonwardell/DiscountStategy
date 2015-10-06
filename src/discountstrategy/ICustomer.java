@@ -5,7 +5,7 @@ package discountstrategy;
  * @author jwardell
  */
 public class ICustomer {
-
+    private FakeDatabase db;
     private String custId;
     private String custName;
 
@@ -29,4 +29,5 @@ public class ICustomer {
     public String getCustName() {
         return custName;
     }
+
 }
