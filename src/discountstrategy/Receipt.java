@@ -32,8 +32,20 @@ public class Receipt {
     }
 
     public final void outputLineItems() {
-        StringBuilder receiptData = new StringBuilder("Thank you for shopping at Kohls!\n\n");
-        receiptData.append("Sold to: ").append(customer.getCustName()).append("\n");
-        output.outputReceipt(receiptData.toString());
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        StringBuilder receiptInfo = new StringBuilder("Thank you for shopping at Kohls!\n\n");
+        receiptInfo.append("Sold to: ").append(customer.getCustName()).append("\n");
+        output.outputReceipt(receiptInfo.toString());
+        
+        receiptInfo.append("ID\tItem\t\t\tPrice\tQty\tSubtotal\tDiscount").append("\n");
+        receiptInfo.append("------------------------------------------------------------------------").append("\n");
+        for(LineItem item : lineItems) {
+            receiptInfo.append(item.getProductName()).append("\t");
+            receiptInfo.append(item.getProductName()).append("\t");
+            receiptInfo.append(nf.format(item.getProductName().getUnitPrice())).append("\t");
+            receiptInfo.append(item.getQty()).append("\t");
+            receiptInfo.append(nf.format(item.getProductUnitPrice()).append("\t\t");
+            receiptInfo.append(nf.format(item.getDiscountAmt())).append("\n");
+        }
     }
 }
