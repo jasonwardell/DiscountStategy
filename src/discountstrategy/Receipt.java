@@ -1,5 +1,7 @@
 package discountstrategy;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @author jwardell
@@ -28,11 +30,10 @@ public class Receipt {
         LineItem li = new LineItem(qty, product);
         addToLineItemArray(li);
     }
-    
-    public void outputLineItems() {
-         for (LineItem item : lineItems) {
-             System.out.println(item);
-        }
-//       return customer.getCustId() + customer.getCustName();
+
+    public final void outputLineItems() {
+        StringBuilder receiptData = new StringBuilder("Thank you for shopping at Kohls!\n\n");
+        receiptData.append("Sold to: ").append(customer.getCustName()).append("\n");
+        output.outputReceipt(receiptData.toString());
     }
 }
