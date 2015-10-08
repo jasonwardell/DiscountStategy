@@ -21,13 +21,13 @@ public class LineItem {
     public void setQty(double qty) {
         this.qty = qty;
     }
-
-    public String getProdId() {
-        return product.getProdId();
-    }
     
     public final Product getProduct() {
         return product;
+    }
+    
+       public final void setProduct(final Product product) {
+        this.product = product;
     }
     
     public double getProductUnitPrice() {
