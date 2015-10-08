@@ -11,7 +11,7 @@ public class LineItem {
     public LineItem(ReceiptDataAccessStrategy db, double qty, String prodId) {
         this.db = db;
         this.qty = qty;
-        this.product = product;
+        this.product = findProduct(prodId);
     }
     
     public double getQty() {
