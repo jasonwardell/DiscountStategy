@@ -26,9 +26,9 @@ public class Receipt {
         lineItems = tempArray;
     }
 
-    public void addLineItem(double qty, Product prodId) {
-        LineItem li = new LineItem(db, qty, prodId);
-        addToLineItemArray(li);
+    public void addLineItem(double qty, String prodId) {
+        LineItem purchase = new LineItem(db, qty, prodId);
+        addToLineItemArray(purchase);
     }
 
     public final void outputLineItems() {
