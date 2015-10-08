@@ -30,6 +30,21 @@ public class Receipt {
         LineItem purchase = new LineItem(db, qty, prodId);
         addToLineItemArray(purchase);
     }
+     public double getSubTotal() {
+        double total = 0.0;
+        for(LineItem purchase : lineItems) {
+            total += purchase.getProductUnitPrice();
+        }
+        return total;
+    }
+     
+              public final double getTotalDiscount() {
+        double total = 0.0;
+        for(LineItem purchase : lineItems) {
+            total += purchase.getProductDiscountAmt();
+        }
+        return total;
+    }
 
     public final void outputLineItems() {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
@@ -48,6 +63,14 @@ public class Receipt {
             receiptInfo.append(nf.format(purchase.getProductDiscountAmt())).append("\n");
         }
   
+        double subTotal = getSubTotal();
+        double totalDiscount = getTotalDiscount();
+        double totalPrice = subTotal - totalDiscount;
+        receiptInfo.append("\n");
+//        receiptInfo.append("\t\t\t\t\t\t\t").append("-------------");
+        receiptInfo.append("\t\t\t\t    Total before discounts:     ").append(nf.format(subTotal)).append("\n");        
+        receiptInfo.append("\t\t\t\t\t   Total discounts:     ").append(nf.format(totalDiscount)).append("\n");
+        receiptInfo.append("\t\t\t\t\t\t Total due:     ").append(nf.format(totalPrice)).append("\n");
         
          output.outputReceipt(receiptInfo.toString());
     }
