@@ -8,7 +8,7 @@ public class LineItem {
     private double qty;
     private Product product;
 
-    public LineItem(ReceiptDataAccessStrategy db, double qty, Product product) {
+    public LineItem(ReceiptDataAccessStrategy db, double qty, String prodId) {
         this.db = db;
         this.qty = qty;
         this.product = product;

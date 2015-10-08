@@ -12,10 +12,10 @@ public class Product {
     private DiscountStategy discount;
 
     public Product(String prodId, double unitPrice, String name, DiscountStategy discount) {
-        this.prodId = prodId;
-        this.name = name;
-        this.unitPrice = unitPrice;
-        this.discount = discount;
+        setProdId(prodId);
+        setName(name);
+        setUnitPrice(unitPrice);
+        setDiscountStategy(discount);
     }
     
     public double getDiscountAmt(double qty) {
