@@ -4,11 +4,12 @@ package discountstrategy;
  * @author jwardell
  */
 public class LineItem {
-
+    private ReceiptDataAccessStrategy db;
     private double qty;
     private Product product;
 
-    public LineItem(double qty, Product product) {
+    public LineItem(ReceiptDataAccessStrategy db, double qty, Product product) {
+        this.db = db;
         this.qty = qty;
         this.product = product;
     }
@@ -25,16 +26,19 @@ public class LineItem {
         return product.getProdId();
     }
     
-    public String getProductName() {
-        return product.getName();
+    public final Product getProduct() {
+        return product;
     }
     
     public double getProductUnitPrice() {
-        return product.getUnitPrice();
+        return product.getUnitPrice() * qty;
     }
     
     public double getProductDiscountAmt() {
-        return product.getDiscountAmt(qty);
+        return product.getDiscount().getDiscountAmt(product.getUnitPrice(), qty);
+    }
+        private final Product findProduct(final String prodId) {
+        return db.findProduct(prodId);
     }
    
 }

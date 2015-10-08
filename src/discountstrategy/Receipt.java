@@ -26,8 +26,8 @@ public class Receipt {
         lineItems = tempArray;
     }
 
-    public void addLineItem(double qty, Product product) {
-        LineItem li = new LineItem(qty, product);
+    public void addLineItem(double qty, Product prodId) {
+        LineItem li = new LineItem(db, qty, prodId);
         addToLineItemArray(li);
     }
 
@@ -35,17 +35,20 @@ public class Receipt {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         StringBuilder receiptInfo = new StringBuilder("Thank you for shopping at Kohls!\n\n");
         receiptInfo.append("Sold to: ").append(customer.getCustName()).append("\n");
-        output.outputReceipt(receiptInfo.toString());
+       
         
         receiptInfo.append("ID\tItem\t\t\tPrice\tQty\tSubtotal\tDiscount").append("\n");
         receiptInfo.append("------------------------------------------------------------------------").append("\n");
         for(LineItem item : lineItems) {
-            receiptInfo.append(item.getProductName()).append("\t");
-            receiptInfo.append(item.getProductName()).append("\t");
-            receiptInfo.append(nf.format(item.getProductName().getUnitPrice())).append("\t");
+            receiptInfo.append(item.getProduct().getProdId()).append("\t");
+            receiptInfo.append(item.getProduct().getName()).append("\t");
+            receiptInfo.append(nf.format(item.getProduct().getUnitPrice())).append("\t");
             receiptInfo.append(item.getQty()).append("\t");
-            receiptInfo.append(nf.format(item.getProductUnitPrice()).append("\t\t");
-            receiptInfo.append(nf.format(item.getDiscountAmt())).append("\n");
+            receiptInfo.append(nf.format(item.getProductUnitPrice())).append("\t\t");
+            receiptInfo.append(nf.format(item.getProductDiscountAmt())).append("\n");
         }
+  
+        
+         output.outputReceipt(receiptInfo.toString());
     }
 }
