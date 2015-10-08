@@ -22,7 +22,7 @@ public class LineItem {
         this.qty = qty;
     }
 
-    public String getProductId() {
+    public String getProdId() {
         return product.getProdId();
     }
     

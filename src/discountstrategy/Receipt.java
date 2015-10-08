@@ -40,12 +40,13 @@ public class Receipt {
         receiptInfo.append("ID\tItem\t\t\tPrice\tQty\tSubtotal\tDiscount").append("\n");
         receiptInfo.append("------------------------------------------------------------------------").append("\n");
         for(LineItem item : lineItems) {
-            receiptInfo.append(item.getProduct().getProdId()).append("\t");
-            receiptInfo.append(item.getProduct().getName()).append("\t");
-            receiptInfo.append(nf.format(item.getProduct().getUnitPrice())).append("\t");
-            receiptInfo.append(item.getQty()).append("\t");
-            receiptInfo.append(nf.format(item.getProductUnitPrice())).append("\t\t");
-            receiptInfo.append(nf.format(item.getProductDiscountAmt())).append("\n");
+            receiptInfo.append(item.getProdId());
+//            receiptInfo.append(item.getProduct().getProdId()).append("\t");
+//            receiptInfo.append(item.getProduct().getName()).append("\t");
+//            receiptInfo.append(nf.format(item.getProduct().getUnitPrice())).append("\t");
+//            receiptInfo.append(item.getQty()).append("\t");
+//            receiptInfo.append(nf.format(item.getProductUnitPrice())).append("\t\t");
+//            receiptInfo.append(nf.format(item.getProductDiscountAmt())).append("\n");
         }
   
         
